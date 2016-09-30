@@ -1,0 +1,94 @@
+<!-- ---
+permalink: /take_action/
+--- -->
+
+<html>
+<head>
+<!-- {% include google_analytics.html %} -->
+
+<style>
+.button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    vertical-align: top;
+}
+.button2 {
+    background-color: #FF7700;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+</style>
+</head>
+<body>
+
+<h2>Acción Politica Paraguay</h2>
+Esta pagina permite generar tweets para los senadores con el fin de comunicar opiniones de la ciudadanía.
+<br><br>
+Instrucciones de uso
+<ol>
+  <li>Ingresar el contenido del Tweet</li>
+  <li>Apretar el botón “Generar Tweets!”</li>
+  <li>Enviar los Tweets uno por uno, o apretar el botón Enviar todos!</li>
+  <li>Enviar uno por uno en la(s) pestaña(s) abierta(s)</li>
+</ol>
+
+<textarea name='fname' class='tweetinput' id='tweetinput' rows="4" cols="50" maxlength="110" autofocus>No a los aguinaldos extras! Yo exijo que se invierta el dinero en prioridades del país!
+</textarea>
+
+<button class="button" type="button" onclick="generar_tweets()">Generar Tweets!</button>
+<br>
+<button class="button2" type="button" onclick="open_all()">Abrir todos!</button>
+
+<div id="container"></div>
+
+
+
+
+
+
+
+
+
+<a href="https://github.com/Karlheinzniebuhr/take_action">Github repo</a>
+<script>
+window.onload = document.getElementById('tweetinput').select();
+var senadores = "@AbdonMiguel @ArnoldoWiens @BlancaChiarajm @BlasLlanoPy @CarlosAAmarilla @carlosfilizzola @carlosnunezag @Castiglioni_L @desimasi2 @enzocardozoj @esperanza_py @FSilvaFacetti @GiuzzioArnaldo @HugoRicher_ @law_senador @LilianSamaniego @lugo_py @MaritoAbdo @mirtagusinky @ovelar_blanca @PETTA08 @Pykare @SenadoresPy @senadorMLopezP @SixtoPereira @victorbogadopy @zulmagomezc @EmiliaAlfaro @EnriBacchetta @YoyitoFranco @KaleGalaverna @blmignarro @OsorioDerlis @TitoSaguier @Cachito_Salomon";
+var diputados = "@anchoramirez @HVelazquez2015 @dipDEcclesiis @PilarDeParedes @DiputadaBlancaV @DiputadoOGD @canindeyu_14 @dipLaloVillalba @Miguedpcgzu @PedroAlliana @AmadoFlorentin @OLGAdiputada @DipPedroBritos @arieloviedo @FabiolaOviedo @DipVictorRios @dipeacosta @JoseMariaIbanez @CynthiaTarrago @BuzarquisA @canusapy @Nestor_Ferrer @romeroroaramon @DionisioAmarill @clementebarrios @ElioCabralPy @Dany_Durand @RocioCasco2 @karinarodrig1 @NitoBogado @oscartuma @MariaCarisimo @DipPortillo @TotiCasco @FFOrtellado @CelsoKennedy";
+var senadores_arr = senadores.split(" ");
+var diputados_arr = diputados.split(" ");
+
+var inputBox = document.getElementById('tweetinput');
+
+
+function generar_tweets(){
+
+var container = document.getElementById("container");
+  for (var i = 0; i < senadores_arr.length; i++) {
+     container.innerHTML += '<div class="content">'+senadores_arr[i] +' '+ inputBox.value +'</div> <a class="link" href="http://twitter.com/home/?status='+senadores_arr[i]+' '+ inputBox.value +'" target="_blank">Twitear esto! <hr>';
+  }
+}
+
+function open_all(){
+  var linkArray = document.getElementsByClassName("link");
+  var arrayLength = linkArray.length;
+  for (var i = 0; i < arrayLength; i++) {
+      //Do something
+      window.open(linkArray[i].href)
+  }
+}
+</script>
